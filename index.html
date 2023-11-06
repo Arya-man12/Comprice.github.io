@@ -1,0 +1,44 @@
+﻿<
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+  <title>Commodities tracker</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+   
+    </head>
+{% if login %}
+<script>
+    $(function() { 
+       location.hash = "#{{ login }}" 
+    });
+</script>
+{% endif %}
+<body>
+    <div class="login">
+        <h1>Forecast commodity prices</h1>
+        <h3>Select commodity and see price after desired number of years</h3>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('data1')}}" method="post">
+            <input type="text" name="Commodity name" placeholder="name" required="required" />
+          
+            <button type="submit" class="btn">Set</button>
+        </form>
+        <form action="{{ url_for('data2')}}" method="post">
+            <input type="number" name="Time period" placeholder="period" required="required" />
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+ 
+    </div>
+
+
+</body>
+</html>
